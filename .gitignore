@@ -1,0 +1,38 @@
+# Virtual environment
+venv/
+.env
+
+# Data files
+data/raw/
+data/processed/
+data/external/
+
+# Model files
+gemma_1.1_instruct_2b_en/
+*.h5
+*.pkl
+*.joblib
+
+# Python compiled files
+__pycache__/
+*.pyc
+*.pyo
+
+# Jupyter notebooks
+.ipynb_checkpoints/
+
+# IDE files
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Large files
+*.tar.gz
+*.zip
