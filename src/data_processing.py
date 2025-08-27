@@ -1,6 +1,7 @@
 import re
 import pandas as pd
 import numpy as np
+import ssl
 import nltk
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
@@ -8,10 +9,22 @@ from nltk.stem import PorterStemmer
 from nltk.sentiment import SentimentIntensityAnalyzer
 import spacy
 
+# SSL workaround for NLTK downloads on macOS
+try:
+    _create_unverified_https_context = ssl._create_unverified_context
+except AttributeError:
+    pass
+else:
+    ssl._create_default_https_context = _create_unverified_https_context
+
 # Download NLTK resources
-nltk.download('punkt', quiet=True)
-nltk.download('stopwords', quiet=True)
-nltk.download('vader_lexicon', quiet=True)
+try:
+    nltk.download('punkt', quiet=True)
+    nltk.download('punkt_tab', quiet=True)
+    nltk.download('stopwords', quiet=True)
+    nltk.download('vader_lexicon', quiet=True)
+except:
+    pass  # Resources might already be downloaded
 
 # Load spaCy model
 try:
